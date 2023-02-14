@@ -7,7 +7,7 @@ import "./App.css";
 function App() {
   const [pokemon, setPokemon] = useState([]);
   useEffect(() => {
-    fetch("https://pokemon-fight-second-take.onrender.com")
+    fetch("http://localhost:8080/pokemon")
       .then((response) => response.json())
       .then((data) => setPokemon(data))
       .catch((err) => console.log(err));
