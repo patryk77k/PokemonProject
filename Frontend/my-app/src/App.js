@@ -7,14 +7,13 @@ import "./App.css";
 function App() {
   const [pokemon, setPokemon] = useState([]);
   useEffect(() => {
-    fetch("http://localhost:8080/pokemon")
+    fetch("https://pokemon-fight-second-take.onrender.com")
       .then((response) => response.json())
       .then((data) => setPokemon(data))
       .catch((err) => console.log(err));
   }, []);
   return (
     <div>
-      
       <Routes>
         <Route path="/pokemon" element={<AllPokemon pokemon={pokemon} />} />
         <Route path="/pokemon/:id" element={<OnePokemon pokemon={pokemon} />} />
