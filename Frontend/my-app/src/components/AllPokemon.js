@@ -1,21 +1,26 @@
 import React from "react";
-import { useState, useEffect } from "react";
+import logo from "../photo/logo.jpeg";
+import { NavLink } from "react-router-dom";
 
-const AllPokemon = (onePokemon) => {
-  const [pokemon, setPokemon] = useState("");
-  useEffect(() => {
-    fetch("http://localhost:8080/pokemon")
-      .then((response) => response.json())
-      .then((data) => setPokemon(data))
-      .catch((err) => console.log(err));
-  }, []);
+const AllPokemon = ({ pokemon }) => {
   return (
-    <div>
-      <p>
-        {pokemon.length
-          ? pokemon.map((onePokemon) => <div>{onePokemon.name.english}</div>)
-          : "...loading"}
-      </p>
+    <div className="container-allpokemon">
+      {pokemon.length
+        ? pokemon.map((showSinglePokemon) => (
+            <div className="items">
+              <img src={logo} alt="logo" />
+              <div>{showSinglePokemon.name.english}</div>
+              <button class="button-59" role="button">
+                SELECT TO FIGHT!
+              </button>
+              <NavLink>
+                <button class="button-59" role="button">
+                  Details
+                </button>
+              </NavLink>
+            </div>
+          ))
+        : "...loading"}
     </div>
   );
 };
